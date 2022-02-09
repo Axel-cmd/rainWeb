@@ -6,11 +6,11 @@ const windowWidth = window.innerWidth;
 const fps = 60;
 var allRains = [];
 var defaultRainProperties = { 
-    quantity: 1500,
+    quantity: 100,
     width: 2,
     minHeight: 30,
     maxHeight: 60,
-    color: 'rgba(100, 0, 150, 0.5)'
+    color: 'rgba(98, 213, 255, 0.8)'
 }
 
 const verifyThatCanvasIsSupported = () => {
@@ -23,6 +23,12 @@ const verifyThatCanvasIsSupported = () => {
         console.error("Oops canvas is not supported !");
         return false;
     }
+}
+
+
+const createBackground = () => {
+    canvasContext.fillStyle = 'rgba(9, 7, 74, 0.8)';
+    canvasContext.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 class Rain{
@@ -94,6 +100,7 @@ const drawScene = () => {
     if(!canvasSupported) return false;
     createAllRect();
     setInterval(() => {
+        //createBackground();
         update();
     }, 1000/fps)
 }
