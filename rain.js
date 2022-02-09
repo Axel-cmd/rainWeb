@@ -65,9 +65,6 @@ const randomize = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-const randomizeRainPosition = (min, max) => {
-    return randomize(min, max);
-}
 
 const randomizeRainScale = () => {
     return randomize(defaultRainProperties.minHeight, defaultRainProperties.maxHeight)
@@ -77,7 +74,7 @@ const createAllRect = () => {
     for(let rect = 0; rect < defaultRainProperties.quantity; rect++){
         allRains.push(new Rain(
             
-            {x: randomizeRainPosition(0, windowWidth), y: randomizeRainPosition(-windowHeight, 0)}, 
+            {x: randomize(0, windowWidth), y: randomize(-windowHeight, 0)}, 
             defaultRainProperties.width, 
             randomizeRainScale(), 
             defaultRainProperties.color
