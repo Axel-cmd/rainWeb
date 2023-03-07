@@ -4,8 +4,8 @@ var canvasContext;
 const windowHeight = window.innerHeight;
 const windowWidth = window.innerWidth;
 const fps = 60;
-var allRains = [];
-var defaultRainProperties = { 
+const allRains = [];
+const defaultRainProperties = { 
     quantity: 100,
     width: 2,
     minHeight: 30,
@@ -19,10 +19,10 @@ const verifyThatCanvasIsSupported = () => {
         canvas.height = windowHeight;
         canvasContext = canvas.getContext("2d");
         return true;
-    } else {
-        console.error("Oops canvas is not supported !");
-        return false;
-    }
+    } 
+
+    console.error("Canvas is not supported !");
+    return false;
 }
 
 
@@ -44,7 +44,6 @@ class Rain{
     }
 
     createRect(context){
-        //'rgb(0, 0, 200)'
         context.fillStyle = this.color;
         context.fillRect(this.x, this.y, this.width, this.height);
     }
@@ -100,7 +99,7 @@ const drawScene = () => {
     if(!canvasSupported) return false;
     createAllRect();
     setInterval(() => {
-        //createBackground();
+        // createBackground();
         update();
     }, 1000/fps)
 }
